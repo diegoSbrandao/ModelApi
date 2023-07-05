@@ -29,8 +29,7 @@ public class Employee implements Serializable {
     private BigDecimal debtValue;
     private String nationalRegistrationId;
 
-    //    @Pattern(regexp = "^(?!.*(\\d)\\1{7,})\\d{8}$", message = "Sequência de CEP inválido!")
-//    @Pattern(regexp = "^(?!.*([0-9&&[^4]])(?:\\1{7}|44444444))\\d{8}$", message = "Sequência de CEP inválido!")
+    @Pattern(regexp = "^(?!.*(\\d)\\1{7,})\\d{8}$", message = "Sequência de CEP inválido!")
     private String zipCode;
 
     @Override
