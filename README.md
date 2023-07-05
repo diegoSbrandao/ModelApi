@@ -31,7 +31,7 @@ A aplicação expõe os seguintes endpoints da API:
 1. GET /employee: Retorna todos os funcionários cadastrados.
 2. GET /employee/{id}: Retorna um funcionário específico com base no ID fornecido.
 3. POST /employee: Cria um novo funcionário com base nos dados fornecidos no corpo da requisição.
-4. GET /employee/validate/cep/{zipCode}: Valida um CEP fornecido e retorna informações sobre o endereço, se válido.
+4. GET /employee/validation/cep/{zipCode}: Valida um CEP fornecido e retorna informações sobre o endereço, se válido.
 5. DELETE /employee/{id}: Deleta um funcionário específico com base no ID fornecido.
 #### Certifique-se de utilizar uma ferramenta adequada (como o cURL ou o Postman) para realizar requisições HTTP para os endpoints acima.
 
