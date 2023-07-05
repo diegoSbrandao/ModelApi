@@ -37,7 +37,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.createEmployee(employee), HttpStatus.CREATED);
     }
 
-    @GetMapping("/validate/cep/{zipCode}")
+    @GetMapping("/validation/cep/{zipCode}")
     public ResponseEntity<Response> validateCEP(@PathVariable("zipCode") String zipCode) {
         Response response = employeeService.validateCEP(zipCode);
         HttpStatus status = response.isValid() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
