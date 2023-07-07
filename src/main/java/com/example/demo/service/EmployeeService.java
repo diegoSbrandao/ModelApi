@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.util.CEPValidationStrategy;
 import com.example.demo.util.DocumentUtil;
 import com.example.demo.util.Response;
 import com.github.gilbertotorrezan.viacep.se.ViaCEPClient;
@@ -54,7 +55,7 @@ public class EmployeeService {
     public Response validateCEP(String zipCode) {
         Response response = new Response();
         try {
-            DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient());
+            DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient(), zipCode1 -> false);
             Response cepResponse = documentUtil.isValidCEP(zipCode);
             if (cepResponse.isValid()) {
                 fillResponseWithCEPData(response, cepResponse);
@@ -63,7 +64,6 @@ public class EmployeeService {
             response.setValid(false);
             response.setZipCode(zipCode);
         }
-
         return response;
     }
 

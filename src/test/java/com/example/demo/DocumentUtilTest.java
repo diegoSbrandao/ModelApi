@@ -24,7 +24,7 @@ public class DocumentUtilTest {
     public void testIsValidCEP_CorrectCEP() throws IOException {
         String cep = "01001-000";
 
-        DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient());
+        DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient(), zipCode1 -> false);
         Response response = documentUtil.isValidCEP(cep);
 
         assertTrue(response.isValid());
@@ -35,7 +35,7 @@ public class DocumentUtilTest {
     public void testIsValidCEP_IncorrectCEP() throws IOException {
         String cep = "12345-678";
 
-        DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient());
+        DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient(), zipCode1 -> false);
         Response response = documentUtil.isValidCEP(cep);
 
         assertFalse(response.isValid());

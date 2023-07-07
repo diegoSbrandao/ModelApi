@@ -2,17 +2,16 @@ package com.example.demo.util;
 
 import com.github.gilbertotorrezan.viacep.se.ViaCEPClient;
 import com.github.gilbertotorrezan.viacep.shared.ViaCEPEndereco;
+import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
 import java.util.stream.Stream;
 
+@RequiredArgsConstructor
 public class DocumentUtil {
 
     private final ViaCEPClient viaCEPClient;
-
-    public DocumentUtil(ViaCEPClient viaCEPClient) {
-        this.viaCEPClient = viaCEPClient;
-    }
+    private final CEPValidationStrategy cepValidationStrategy;
 
     public Response isValidCEP(String zipCode) throws IOException {
         Response response = new Response();
@@ -20,7 +19,7 @@ public class DocumentUtil {
             ViaCEPEndereco viaCEP = viaCEPClient.getEndereco(zipCode);
             if (isValidViaCEP(viaCEP)) {
                 fillResponseWithViaCEPData(response, viaCEP);
-            } else if (isValidSpecialCEP(zipCode)) {
+            } else if (cepValidationStrategy.isValidCEP(zipCode)) {
                 setSpecialCEPData(response, zipCode);
             }
         } catch (IllegalArgumentException e) {
@@ -49,10 +48,6 @@ public class DocumentUtil {
                         response.getUf())
                 .anyMatch(String::isEmpty);
         response.setSpecialZipCode(specialZipCode);
-    }
-
-    private boolean isValidSpecialCEP(String zipCode) {
-        return zipCode.equals("44444444") || zipCode.equals("44444-444");
     }
 
     private void setSpecialCEPData(Response response, String zipCode) {
