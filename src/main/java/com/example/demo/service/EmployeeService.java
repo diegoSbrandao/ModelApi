@@ -4,6 +4,7 @@ import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.util.DocumentUtil;
 import com.example.demo.util.Response;
+import com.github.gilbertotorrezan.viacep.se.ViaCEPClient;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,8 @@ public class EmployeeService {
     public Response validateCEP(String zipCode) {
         Response response = new Response();
         try {
-            Response cepResponse = DocumentUtil.isValidCEP(zipCode);
+            DocumentUtil documentUtil = new DocumentUtil(new ViaCEPClient());
+            Response cepResponse = documentUtil.isValidCEP(zipCode);
             if (cepResponse.isValid()) {
                 fillResponseWithCEPData(response, cepResponse);
             }
@@ -74,6 +76,7 @@ public class EmployeeService {
         response.setCidade(cepResponse.getCidade());
         response.setUf(cepResponse.getUf());
     }
+
 
     public void deleteEmployee(Long id) {
         Optional<Employee> employeeIdIsValid = repository.findById(id);

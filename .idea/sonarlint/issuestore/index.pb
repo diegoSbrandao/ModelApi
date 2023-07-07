@@ -17,11 +17,3 @@ G.idea/sonarlint/issuestore/a/4/a41153acd6ad529570930b376f0edfdd62f17ffd,7\2\72
 Q.idea/sonarlint/securityhotspotstore/a/4/a41153acd6ad529570930b376f0edfdd62f17ffd,a\7\a75352f842d02dd947c6d35bb6c67a7dd123488c
 Å
 Q.idea/sonarlint/securityhotspotstore/d/f/dfa17cd462f112061104abd81ec9f3bb53cde898,b\f\bf2ee5cf360a4394e05fbeb9a8f5a474638caa8f
-d
-4src/test/java/com/example/demo/DocumentUtilTest.java,5\f\5fdacd3676a5c6304bdc3486aa252f6ebf44d03b
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-c
-3src/main/java/com/example/demo/DemoApplication.java,7\1\7171df7c024808a26040ea210fc78aec82a83023
-q
-Asrc/main/java/com/example/demo/controller/EmployeeController.java,6\3\63d2263589778aa4e5d43efb596845de8324d6de
